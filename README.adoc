@@ -1,13 +1,24 @@
-# EXECUTE the following commands to download locally the requird MAVEN artifacts and docker image to avoid delays during Tech Exchange
+*  EXECUTE the following commands to download locally the requird MAVEN artifacts and docker image to avoid delays during Tech Exchange
 
+----
 mvn compile vertx:run -Dvertx.runArgs="-cluster -Djava.net.preferIPv4Stack=true" 
+----
 
-# Downloads the necessary image
+* Downloads the necessary image
+
+----
 docker pull registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
+----
 
-# start the cluster locally and create project
+* start the cluster locally and create project
+
+----
 ocp cluster up 
 ocp new-project workshop
+----
 
-# deploy project on local cluster
+* deploy project on local cluster
+
+----
 mvn clean package fabric8:deploy -Dfabric8.mode=openshift -P openshift
+----
